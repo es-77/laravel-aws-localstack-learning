@@ -26,8 +26,16 @@ A practical Laravel application for learning AWS services locally using LocalSta
 - **[Policy Management](http://localhost:8080/iam/policies):** Supports listing, creating (JSON formatted), and deleting custom policies.
 - **[IAM Policy Simulator](http://localhost:8080/iam/simulator):** Interactive workspace evaluating custom JSON policies against a user-supplied action and resource (offline evaluation using wildcard regex rules).
 
+### Stage 3 — DynamoDB ✅
+
+**Completed DynamoDB Learning Module Features:**
+- **[DynamoDB Dashboard / Overview](http://localhost:8080/dynamodb):** Displays connection health status, table counts, item counts, and storage size metrics.
+- **[Table Management](http://localhost:8080/dynamodb/tables):** Supports listing active tables, visualizing key schemas, and table creation (Hash & Range keys with String/Number types) and deletion.
+- **[Item Explorer](http://localhost:8080/dynamodb/tables):** Browses table records, unpacking DynamoDB typed attribute fields. Supports item additions (using flexible JSON attribute fields) and deletions.
+- **[Query / Scan Playground](http://localhost:8080/dynamodb/query-scan):** Interactive search sandbox executing Queries (targeted hash keys) and Scans (broad lookups), displaying formatted JSON outputs.
+
 **Next Up:**
-- **Stage 3 — DynamoDB ⬜** *(Not started - Locked)*
+- **Stage 4 — SQS ⬜** *(Not started - Locked)*
 
 ---
 
@@ -37,7 +45,7 @@ A practical Laravel application for learning AWS services locally using LocalSta
 |---:|---|---|---|
 | 1 | **S3** | Files, buckets, uploads, permissions | ✅ Completed |
 | 2 | **IAM** | Users, roles, policies, permissions | ✅ Completed |
-| 3 | **DynamoDB** | NoSQL database | ⬜ Locked / Coming Soon |
+| 3 | **DynamoDB** | NoSQL database | ✅ Completed |
 | 4 | **SQS** | Queues and background jobs | ⬜ Locked / Coming Soon |
 | 5 | **SNS** | Notifications and pub/sub | ⬜ Locked / Coming Soon |
 | 6 | **Lambda** | Serverless functions | ⬜ Locked / Coming Soon |

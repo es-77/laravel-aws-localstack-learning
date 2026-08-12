@@ -67,7 +67,7 @@
 
             <!-- Version Info -->
             <span class="text-xs text-slate-400 bg-aws-slate px-2.5 py-1 rounded-md border border-slate-800">
-                Stage 2: S3 &amp; IAM Active
+                Stage 3: S3, IAM &amp; DynamoDB Active
             </span>
         </div>
     </header>
@@ -150,10 +150,37 @@
                         </div>
                     </div>
 
-                    <!-- Future Roadmaps (3 - 15) -->
+                    <!-- 3. DynamoDB Section -->
+                    <div class="space-y-0.5">
+                        <button type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-200 bg-aws-slate font-medium text-sm transition mt-1">
+                            <span class="flex items-center gap-2.5">
+                                <span class="bg-[#ff9900] text-slate-950 font-bold px-1.5 py-0.5 rounded text-[10px]">3</span>
+                                <i class="fa-solid fa-database text-[#ff9900]"></i>
+                                <span>Amazon DynamoDB</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                        
+                        <!-- DynamoDB Active Submenu -->
+                        <div class="pl-8 pr-2 py-1.5 space-y-1 bg-slate-900/40 rounded-lg border-l border-slate-800 ml-3">
+                            <a href="{{ route('dynamodb.overview') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('dynamodb.overview') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-gauge-high mr-2 text-[10px]"></i>Overview
+                            </a>
+                            <a href="{{ route('dynamodb.tables.index') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('dynamodb.tables.index') || request()->routeIs('dynamodb.items.index') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-table mr-2 text-[10px]"></i>Tables
+                            </a>
+                            <a href="{{ request()->routeIs('dynamodb.items.index') ? request()->fullUrl() : (isset($status) && $status['connected'] && isset($tables) && count($tables) > 0 ? route('dynamodb.items.index', $tables[0]['name']) : route('dynamodb.tables.index')) }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('dynamodb.items.index') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-list mr-2 text-[10px]"></i>Items
+                            </a>
+                            <a href="{{ route('dynamodb.query-scan') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('dynamodb.query-scan') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-magnifying-glass mr-2 text-[10px]"></i>Query / Scan
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Future Roadmaps (4 - 15) -->
                     @php
                         $futureStages = [
-                            ['num' => '3', 'name' => 'DynamoDB', 'icon' => 'fa-database'],
                             ['num' => '4', 'name' => 'SQS', 'icon' => 'fa-list-ol'],
                             ['num' => '5', 'name' => 'SNS', 'icon' => 'fa-bullhorn'],
                             ['num' => '6', 'name' => 'Lambda', 'icon' => 'fa-bolt'],

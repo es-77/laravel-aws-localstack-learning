@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\S3Controller;
 use App\Http\Controllers\IamController;
+use App\Http\Controllers\DynamoDbController;
 
 Route::get('/', [S3Controller::class, 'overview'])->name('dashboard');
 
@@ -44,3 +45,17 @@ Route::prefix('iam')->group(function () {
     
     Route::match(['get', 'post'], '/simulator', [IamController::class, 'simulator'])->name('iam.simulator');
 });
+
+Route::prefix('dynamodb')->group(function () {
+    Route::get('/', [DynamoDbController::class, 'overview'])->name('dynamodb.overview');
+    Route::get('/tables', [DynamoDbController::class, 'tables'])->name('dynamodb.tables.index');
+    Route::post('/tables', [DynamoDbController::class, 'createTable'])->name('dynamodb.tables.store');
+    Route::delete('/tables/{table}', [DynamoDbController::class, 'deleteTable'])->name('dynamodb.tables.destroy');
+    
+    Route::get('/tables/{table}/items', [DynamoDbController::class, 'items'])->name('dynamodb.items.index');
+    Route::post('/tables/{table}/items', [DynamoDbController::class, 'putItem'])->name('dynamodb.items.store');
+    Route::delete('/tables/{table}/items', [DynamoDbController::class, 'deleteItem'])->name('dynamodb.items.destroy');
+    
+    Route::match(['get', 'post'], '/query-scan', [DynamoDbController::class, 'queryScan'])->name('dynamodb.query-scan');
+});
+

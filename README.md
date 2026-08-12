@@ -1,58 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel AWS LocalStack Learning Lab
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A practical Laravel application for learning AWS services locally using LocalStack.
 
-## About Laravel
+## Project Progress
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Stage 1 — S3 ✅
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Completed S3 Learning Module Features:**
+- **S3 Dashboard / Overview:** Displays connection health status, active credentials/endpoints, bucket metrics (count, total size, object count), and recent files.
+- **Bucket Management:** Supports listing active buckets, creating buckets (with name validation according to AWS S3 rules), and deleting buckets (supporting safety checks and forced recursive deletion).
+- **Object/File Explorer:** Browses files and virtual folders under prefixes with folder icons and navigation breadcrumbs.
+- **Interactive File Upload:** Drag-and-drop multi-file upload with active real-time upload progress bars (implemented via JS XHR).
+- **Secure File Download:** Streams objects directly through a Laravel controller, protecting AWS keys.
+- **Inline File Preview:** Renders images (JPG, PNG, GIF, WebP) and PDFs inline in a modal, falling back to download action for unsupported types.
+- **Delete Object:** Safe object deletion with confirmation prompts.
+- **S3 Configuration & Permissions:** Visual summary of AWS environments and guides on IAM Users, Credentials, Bucket Policies, and ACLs.
+- **AWS CLI Command Integration:** Displays equivalent `lstk aws s3` CLI commands on all active pages.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Next Up:**
+- **Stage 2 — IAM ⬜** *(Not started - Locked)*
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## AWS Learning Roadmap
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Stage | AWS Service | What You Will Learn | Status |
+|---:|---|---|---|
+| 1 | **S3** | Files, buckets, uploads, permissions | ✅ Completed |
+| 2 | **IAM** | Users, roles, policies, permissions | ⬜ Locked / Coming Soon |
+| 3 | **DynamoDB** | NoSQL database | ⬜ Locked / Coming Soon |
+| 4 | **SQS** | Queues and background jobs | ⬜ Locked / Coming Soon |
+| 5 | **SNS** | Notifications and pub/sub | ⬜ Locked / Coming Soon |
+| 6 | **Lambda** | Serverless functions | ⬜ Locked / Coming Soon |
+| 7 | **API Gateway** | APIs → Lambda | ⬜ Locked / Coming Soon |
+| 8 | **EventBridge** | Event-driven architecture | ⬜ Locked / Coming Soon |
+| 9 | **CloudWatch** | Logs and monitoring | ⬜ Locked / Coming Soon |
+| 10 | **RDS** | Managed MySQL/PostgreSQL | ⬜ Locked / Coming Soon |
+| 11 | **ECS** | Docker containers on AWS | ⬜ Locked / Coming Soon |
+| 12 | **EC2** | Virtual servers | ⬜ Locked / Coming Soon |
+| 13 | **VPC** | AWS networking | ⬜ Locked / Coming Soon |
+| 14 | **CloudFront** | CDN | ⬜ Locked / Coming Soon |
+| 15 | **Route 53** | DNS | ⬜ Locked / Coming Soon |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## How to Run Locally
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 1. Requirements
+- PHP 8.3+
+- Composer
+- Docker
+- Node.js & NPM
+- AWS CLI & LocalStack
 
+### 2. Startup Commands
+Start LocalStack:
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+docker compose up -d   # or your local localstack startup command
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Start Laravel Development Server:
+```bash
+php artisan serve
+```
 
-## Contributing
+Compile Assets:
+```bash
+npm run dev
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open `http://localhost:8000` in your browser.

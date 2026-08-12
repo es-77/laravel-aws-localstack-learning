@@ -17,8 +17,17 @@ A practical Laravel application for learning AWS services locally using LocalSta
 - **[S3 Configuration & Permissions](http://localhost:8080/s3/permissions):** Visual summary of AWS environments and guides on IAM Users, Credentials, Bucket Policies, and ACLs.
 - **AWS CLI Command Integration:** Displays equivalent `lstk aws s3` CLI commands on all active pages.
 
+### Stage 2 — IAM ✅
+
+**Completed IAM Learning Module Features:**
+- **[IAM Dashboard / Overview](http://localhost:8080/iam):** Displays connection health status and counts of active users, roles, and custom policies.
+- **[User Management](http://localhost:8080/iam/users):** Supports listing active users, creating new users, detaching policies, and deleting users. Offers inline policy attachments.
+- **[Role Management](http://localhost:8080/iam/roles):** Supports listing roles, viewing trust relationships, creating roles, and deleting roles.
+- **[Policy Management](http://localhost:8080/iam/policies):** Supports listing, creating (JSON formatted), and deleting custom policies.
+- **[IAM Policy Simulator](http://localhost:8080/iam/simulator):** Interactive workspace evaluating custom JSON policies against a user-supplied action and resource (offline evaluation using wildcard regex rules).
+
 **Next Up:**
-- **Stage 2 — IAM ⬜** *(Not started - Locked)*
+- **Stage 3 — DynamoDB ⬜** *(Not started - Locked)*
 
 ---
 
@@ -27,7 +36,7 @@ A practical Laravel application for learning AWS services locally using LocalSta
 | Stage | AWS Service | What You Will Learn | Status |
 |---:|---|---|---|
 | 1 | **S3** | Files, buckets, uploads, permissions | ✅ Completed |
-| 2 | **IAM** | Users, roles, policies, permissions | ⬜ Locked / Coming Soon |
+| 2 | **IAM** | Users, roles, policies, permissions | ✅ Completed |
 | 3 | **DynamoDB** | NoSQL database | ⬜ Locked / Coming Soon |
 | 4 | **SQS** | Queues and background jobs | ⬜ Locked / Coming Soon |
 | 5 | **SNS** | Notifications and pub/sub | ⬜ Locked / Coming Soon |

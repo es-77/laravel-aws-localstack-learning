@@ -67,7 +67,7 @@
 
             <!-- Version Info -->
             <span class="text-xs text-slate-400 bg-aws-slate px-2.5 py-1 rounded-md border border-slate-800">
-                Stage 1: S3 Active
+                Stage 2: S3 &amp; IAM Active
             </span>
         </div>
     </header>
@@ -119,10 +119,40 @@
                         </div>
                     </div>
 
-                    <!-- Future Roadmaps (2 - 15) -->
+                    <!-- 2. IAM Section -->
+                    <div class="space-y-0.5">
+                        <button type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-200 bg-aws-slate font-medium text-sm transition mt-1">
+                            <span class="flex items-center gap-2.5">
+                                <span class="bg-[#ff9900] text-slate-950 font-bold px-1.5 py-0.5 rounded text-[10px]">2</span>
+                                <i class="fa-solid fa-user-shield text-[#ff9900]"></i>
+                                <span>AWS IAM</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                        
+                        <!-- IAM Active Submenu -->
+                        <div class="pl-8 pr-2 py-1.5 space-y-1 bg-slate-900/40 rounded-lg border-l border-slate-800 ml-3">
+                            <a href="{{ route('iam.overview') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('iam.overview') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-gauge-high mr-2 text-[10px]"></i>Overview
+                            </a>
+                            <a href="{{ route('iam.users.index') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('iam.users.index') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-users mr-2 text-[10px]"></i>Users
+                            </a>
+                            <a href="{{ route('iam.roles.index') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('iam.roles.index') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-user-gear mr-2 text-[10px]"></i>Roles
+                            </a>
+                            <a href="{{ route('iam.policies.index') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('iam.policies.index') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-file-shield mr-2 text-[10px]"></i>Policies
+                            </a>
+                            <a href="{{ route('iam.simulator') }}" class="block px-3 py-1.5 text-xs rounded transition {{ request()->routeIs('iam.simulator') ? 'text-[#ff9900] font-semibold bg-aws-slate/40' : 'text-slate-400 hover:text-slate-200' }}">
+                                <i class="fa-solid fa-vial mr-2 text-[10px]"></i>Policy Simulator
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Future Roadmaps (3 - 15) -->
                     @php
                         $futureStages = [
-                            ['num' => '2', 'name' => 'AWS IAM', 'icon' => 'fa-user-shield'],
                             ['num' => '3', 'name' => 'DynamoDB', 'icon' => 'fa-database'],
                             ['num' => '4', 'name' => 'SQS', 'icon' => 'fa-list-ol'],
                             ['num' => '5', 'name' => 'SNS', 'icon' => 'fa-bullhorn'],

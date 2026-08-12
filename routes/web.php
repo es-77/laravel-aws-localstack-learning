@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\S3Controller;
+use App\Http\Controllers\IamController;
 
 Route::get('/', [S3Controller::class, 'overview'])->name('dashboard');
 
@@ -24,3 +25,22 @@ Route::prefix('s3')->group(function () {
     Route::get('/permissions', [S3Controller::class, 'permissions'])->name('s3.permissions');
 });
 
+Route::prefix('iam')->group(function () {
+    Route::get('/', [IamController::class, 'overview'])->name('iam.overview');
+    
+    Route::get('/users', [IamController::class, 'users'])->name('iam.users.index');
+    Route::post('/users', [IamController::class, 'createUser'])->name('iam.users.store');
+    Route::delete('/users/{username}', [IamController::class, 'deleteUser'])->name('iam.users.destroy');
+    Route::post('/users/{username}/policies', [IamController::class, 'attachPolicy'])->name('iam.users.policy.attach');
+    Route::delete('/users/{username}/policies', [IamController::class, 'detachPolicy'])->name('iam.users.policy.detach');
+    
+    Route::get('/roles', [IamController::class, 'roles'])->name('iam.roles.index');
+    Route::post('/roles', [IamController::class, 'createRole'])->name('iam.roles.store');
+    Route::delete('/roles/{role}', [IamController::class, 'deleteRole'])->name('iam.roles.destroy');
+    
+    Route::get('/policies', [IamController::class, 'policies'])->name('iam.policies.index');
+    Route::post('/policies', [IamController::class, 'createPolicy'])->name('iam.policies.store');
+    Route::delete('/policies', [IamController::class, 'deletePolicy'])->name('iam.policies.destroy');
+    
+    Route::match(['get', 'post'], '/simulator', [IamController::class, 'simulator'])->name('iam.simulator');
+});
